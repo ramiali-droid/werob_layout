@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<sdf version="1.10">
+  <model name="charging_zone">
+    <static>true</static>
+
+    <link name="zone_link">
+
+      <!-- ===================== -->
+      <!-- MAIN FLOOR (inner area) -->
+      <!-- ===================== -->
+      <visual name="inner_area">
+        <pose>0 0 0.01 0 0 0</pose>
+        <geometry>
+          <box>
+            <!-- Space for 3 Husky robots -->
+            <size>6 3 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <!-- light gray center -->
+          <ambient>0.8 0.8 0.8 0.6</ambient>
+          <diffuse>0.8 0.8 0.8 0.6</diffuse>
+        </material>
+      </visual>
+
+      <!-- ===================== -->
+      <!-- BORDER BASE (yellow) -->
+      <!-- ===================== -->
+      <visual name="border_base">
+        <pose>0 0 0.011 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>6.4 3.4 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient> <!-- yellow -->
+          <diffuse>1 1 0 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- ===================== -->
+      <!-- INNER CUT (to create border effect) -->
+      <!-- ===================== -->
+      <visual name="border_cut">
+        <pose>0 0 0.012 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>6 3 0.025</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.8 0.8 0.8 1</ambient>
+          <diffuse>0.8 0.8 0.8 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- ===================== -->
+      <!-- STRIPES (white blocks) -->
+      <!-- ===================== -->
+
+      <!-- left stripes -->
+      <visual name="stripe_left_1">
+        <pose>-3.1 -1.2 0.02 0 0 0</pose>
+        <geometry><box><size>0.2 0.4 0.02</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient></material>
+      </visual>
+
+      <visual name="stripe_left_2">
+        <pose>-3.1 0 0.02 0 0 0</pose>
+        <geometry><box><size>0.2 0.4 0.02</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient></material>
+      </visual>
+
+      <visual name="stripe_left_3">
+        <pose>-3.1 1.2 0.02 0 0 0</pose>
+        <geometry><box><size>0.2 0.4 0.02</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient></material>
+      </visual>
+
+      <!-- right stripes -->
+      <visual name="stripe_right_1">
+        <pose>3.1 -1.2 0.02 0 0 0</pose>
+        <geometry><box><size>0.2 0.4 0.02</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient></material>
+      </visual>
+
+      <visual name="stripe_right_2">
+        <pose>3.1 0 0.02 0 0 0</pose>
+        <geometry><box><size>0.2 0.4 0.02</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient></material>
+      </visual>
+
+      <visual name="stripe_right_3">
+        <pose>3.1 1.2 0.02 0 0 0</pose>
+        <geometry><box><size>0.2 0.4 0.02</size></box></geometry>
+        <material><ambient>1 1 1 1</ambient></material>
+      </visual>
+
+      <!-- ===================== -->
+      <!-- ROBOT POSITION MARKERS -->
+      <!-- ===================== -->
+
+      <!-- slot 1 -->
+      <visual name="robot_slot_1">
+        <pose>-2 0 0.02 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.2 1.5 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0 1 0 0.4</ambient>
+        </material>
+      </visual>
+
+      <!-- slot 2 -->
+      <visual name="robot_slot_2">
+        <pose>0 0 0.02 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.2 1.5 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0 1 0 0.4</ambient>
+        </material>
+      </visual>
+
+      <!-- slot 3 -->
+      <visual name="robot_slot_3">
+        <pose>2 0 0.02 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>1.2 1.5 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0 1 0 0.4</ambient>
+        </material>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,10 @@
+# Detection covers all observed first-lap free space. Zones label incidents;
+# they do not restrict where an object can be detected.
+detection:
+  difference_threshold_m: 0.5
+  persistence_scans: 3
+  incident_separation_m: 0.9
+monitored_zones:
+  - id: indoor_building
+    expected: clear_on_first_round
+    bounds_xy_m: [-9.0, 2.0, -7.05, -1.95]

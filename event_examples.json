@@ -1,0 +1,32 @@
+{
+  "alarm_open_gate": {
+    "schema_version": "1.0",
+    "event_id": "01J9PILOT-7M2Q-OPEN-GATE",
+    "event_type": "perimeter.open_gate",
+    "severity": "high",
+    "status": "new",
+    "detected_at_utc": "2026-01-14T02:17:34Z",
+    "site_id": "SITE-ANON-01",
+    "route_id": "NIGHT-PERIMETER-01",
+    "round_id": "20260114-0210-003",
+    "location": {"zone": "north_vehicle_gate", "map_x_m": 12.04, "map_y_m": 0.18, "nearest_waypoint": "gate"},
+    "assessment": {"reference_state": "closed", "observed_state": "open", "confidence": 0.94, "sensor_sources": ["lidar", "rgb_camera", "thermal"]},
+    "evidence": {"preview_uri": "https://evidence.example.invalid/01J9PILOT-7M2Q/preview", "thermal_preview_uri": "https://evidence.example.invalid/01J9PILOT-7M2Q/thermal", "privacy_filtered": true, "faces_and_plates_redacted": true, "retention_until_utc": "2026-01-17T02:17:34Z", "sha256": "a3b1...example"},
+    "recommended_action": "dispatch_guard",
+    "robot": {"id": "R-01", "battery_percent": 67, "connectivity": "primary_cellular", "safe_state": "patrol_paused"}
+  },
+  "round_completed": {
+    "schema_version": "1.0",
+    "event_type": "patrol.round_completed",
+    "result": "completed_as_planned",
+    "site_id": "SITE-ANON-01",
+    "route_id": "NIGHT-PERIMETER-01",
+    "round_id": "20260114-0210-003",
+    "started_at_utc": "2026-01-14T02:10:00Z",
+    "completed_at_utc": "2026-01-14T02:36:12Z",
+    "waypoints_planned": 8,
+    "waypoints_reached": 8,
+    "exceptions": [],
+    "report": {"uri": "https://reports.example.invalid/20260114-0210-003", "JOHN": "5f9e...example", "previous_report_hash": "e12c...example", "signature_key_id": "robot-pilot-2026-q1"}
+  }
+}

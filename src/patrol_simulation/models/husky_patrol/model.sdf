@@ -1,0 +1,649 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.9">
+  <model name="husky_patrol">
+    <link name="base_link">
+      <inertial>
+        <pose>-0.00065 -0.085 0.062 0 -0 0</pose>
+        <mass>46.034</mass>
+        <inertia>
+          <ixx>0.6022</ixx>
+          <ixy>-0.02364</ixy>
+          <ixz>-0.1197</ixz>
+          <iyy>1.7386</iyy>
+          <iyz>-0.001544</iyz>
+          <izz>2.0296</izz>
+        </inertia>
+      </inertial>
+      <collision name="base_link_collision">
+        <pose>0 0 0.061875 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.9874 0.5709 0.12375</size>
+          </box>
+        </geometry>
+      </collision>
+      <collision name="base_link_collision_1">
+        <pose>0 0 0.175625 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.78992 0.5709 0.10375</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="base_link_visual">
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://husky_patrol/meshes/base_link.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="body_contact" type="contact">
+        <always_on>true</always_on>
+        <update_rate>20</update_rate>
+        <topic>/patrol/contacts</topic>
+        <contact>
+          <collision>base_link_collision</collision>
+          <collision>base_link_collision_1</collision>
+          <topic>/patrol/contacts</topic>
+          <collision>lidar_riser_collision</collision>
+          <collision>camera_riser_collision</collision>
+          <collision>camera_bracket_collision</collision>
+        </contact>
+      </sensor>
+      <visual name="lidar_riser_visual">
+        <geometry>
+          <box>
+            <size>.025 .025 .12272</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>.3 .32 .34 1</ambient>
+          <diffuse>.3 .32 .34 1</diffuse>
+        </material>
+        <pose>0.12 0 0.30636 0 0 0</pose>
+      </visual>
+      <collision name="lidar_riser_collision">
+        <geometry>
+          <box>
+            <size>.025 .025 .12272</size>
+          </box>
+        </geometry>
+        <pose>0.12 0 0.30636 0 0 0</pose>
+      </collision>
+      <visual name="camera_riser_visual">
+        <geometry>
+          <box>
+            <size>.025 .025 .075</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>.3 .32 .34 1</ambient>
+          <diffuse>.3 .32 .34 1</diffuse>
+        </material>
+        <pose>0.12 0 0.46522 0 0 0</pose>
+      </visual>
+      <collision name="camera_riser_collision">
+        <geometry>
+          <box>
+            <size>.025 .025 .075</size>
+          </box>
+        </geometry>
+        <pose>0.12 0 0.46522 0 0 0</pose>
+      </collision>
+      <visual name="camera_bracket_visual">
+        <geometry>
+          <box>
+            <size>.31 .025 .02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>.3 .32 .34 1</ambient>
+          <diffuse>.3 .32 .34 1</diffuse>
+        </material>
+        <pose>0.275 0 0.49272 0 0 0</pose>
+      </visual>
+      <collision name="camera_bracket_collision">
+        <geometry>
+          <box>
+            <size>.31 .025 .02</size>
+          </box>
+        </geometry>
+        <pose>0.275 0 0.49272 0 0 0</pose>
+      </collision>
+    </link>
+    <joint name="front_left_wheel" type="revolute">
+      <pose relative_to="base_link">0.256 0.2854 0.03282 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_left_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="front_left_wheel_link">
+      <pose relative_to="front_left_wheel">0 0 0 0 -0 0</pose>
+      <inertial>
+        <mass>2.637</mass>
+        <inertia>
+          <ixx>0.02467</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.04411</iyy>
+          <iyz>0</iyz>
+          <izz>0.02467</izz>
+        </inertia>
+      </inertial>
+      <collision name="front_left_wheel_link_collision">
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1143</length>
+            <radius>0.1651</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 1</fdir1>
+              <slip1>0.02</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="front_left_wheel_link_visual">
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://husky_patrol/meshes/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="front_right_wheel" type="revolute">
+      <pose relative_to="base_link">0.256 -0.2854 0.03282 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_right_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="front_right_wheel_link">
+      <pose relative_to="front_right_wheel">0 0 0 0 -0 0</pose>
+      <inertial>
+        <mass>2.637</mass>
+        <inertia>
+          <ixx>0.02467</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.04411</iyy>
+          <iyz>0</iyz>
+          <izz>0.02467</izz>
+        </inertia>
+      </inertial>
+      <collision name="front_right_wheel_link_collision">
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1143</length>
+            <radius>0.1651</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 1</fdir1>
+              <slip1>0.02</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="front_right_wheel_link_visual">
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://husky_patrol/meshes/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="rear_left_wheel" type="revolute">
+      <pose relative_to="base_link">-0.256 0.2854 0.03282 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>rear_left_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="rear_left_wheel_link">
+      <pose relative_to="rear_left_wheel">0 0 0 0 -0 0</pose>
+      <inertial>
+        <mass>2.637</mass>
+        <inertia>
+          <ixx>0.02467</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.04411</iyy>
+          <iyz>0</iyz>
+          <izz>0.02467</izz>
+        </inertia>
+      </inertial>
+      <collision name="rear_left_wheel_link_collision">
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1143</length>
+            <radius>0.1651</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 1</fdir1>
+              <slip1>0.02</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="rear_left_wheel_link_visual">
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://husky_patrol/meshes/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <joint name="rear_right_wheel" type="revolute">
+      <pose relative_to="base_link">-0.256 -0.2854 0.03282 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>rear_right_wheel_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name="rear_right_wheel_link">
+      <pose relative_to="rear_right_wheel">0 0 0 0 -0 0</pose>
+      <inertial>
+        <mass>2.637</mass>
+        <inertia>
+          <ixx>0.02467</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.04411</iyy>
+          <iyz>0</iyz>
+          <izz>0.02467</izz>
+        </inertia>
+      </inertial>
+      <collision name="rear_right_wheel_link_collision">
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1143</length>
+            <radius>0.1651</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>1e+07</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 1</fdir1>
+              <slip1>0.02</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="rear_right_wheel_link_visual">
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://husky_patrol/meshes/wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="top_chassis_link">
+      <visual name="top_chassis_visual">
+        <geometry>
+          <mesh>
+            <uri>model://husky_patrol/meshes/top_chassis.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="top_chassis_collision">
+        <geometry>
+          <mesh>
+            <uri>model://husky_patrol/meshes/top_chassis.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="top_chassis_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>top_chassis_link</child>
+    </joint>
+    <link name="top_plate_link">
+      <visual name="top_plate_visual">
+        <geometry>
+          <mesh>
+            <uri>model://husky_patrol/meshes/top_plate.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <pose relative_to="base_link">0.0812 0 0.245 0 0 0</pose>
+    </link>
+    <joint name="top_plate_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>top_plate_link</child>
+    </joint>
+    <link name="front_bumper_link">
+      <visual name="front_bumper_visual">
+        <geometry>
+          <mesh>
+            <uri>model://husky_patrol/meshes/bumper.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="front_bumper_link_collision">
+        <geometry>
+          <box>
+            <size>0.15 0.375 0.026</size>
+          </box>
+        </geometry>
+      </collision>
+      <sensor name="front_bumper_sensor" type="contact">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <contact>
+          <collision>front_bumper_link_collision</collision>
+          <topic>/patrol/contacts</topic>
+        </contact>
+        <topic>/patrol/contacts</topic>
+      </sensor>
+      <pose relative_to="base_link">0.48 0 0.091 0 0 3.141592653589793</pose>
+    </link>
+    <joint name="front_bumper" type="fixed">
+      <parent>base_link</parent>
+      <child>front_bumper_link</child>
+    </joint>
+    <link name="rear_bumper_link">
+      <visual name="rear_bumper_visual">
+        <geometry>
+          <mesh>
+            <uri>model://husky_patrol/meshes/bumper.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="rear_bumper_link_collision">
+        <geometry>
+          <box>
+            <size>0.15 0.375 0.026</size>
+          </box>
+        </geometry>
+      </collision>
+      <sensor name="rear_bumper_sensor" type="contact">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <contact>
+          <collision>rear_bumper_link_collision</collision>
+          <topic>/patrol/contacts</topic>
+        </contact>
+        <topic>/patrol/contacts</topic>
+      </sensor>
+      <pose relative_to="base_link">-0.48 0 0.091 0 0 0</pose>
+    </link>
+    <joint name="rear_bumper" type="fixed">
+      <parent>base_link</parent>
+      <child>rear_bumper_link</child>
+    </joint>
+    <link name="arm_mount_plate_link">
+      <pose>0 0 0.235 0 0 0</pose>
+      <visual name="arm_mount_plate_visual">
+        <geometry>
+          <box>
+            <size>0.52 0.4 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.05 0.05 0.05 1</specular>
+        </material>
+      </visual>
+      <collision name="arm_mount_plate_collision">
+        <geometry>
+          <box>
+            <size>0.3 0.3 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="arm_mount_plate_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>arm_mount_plate_link</child>
+    </joint>
+    <link name="ur5_base_link">
+      <pose>0 0 0.24 0 0 0</pose>
+      <visual name="ur5_base_link_visual">
+        <geometry>
+          <mesh>
+            <uri>model://husky_patrol/meshes/visual/ur5/base.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="ur5_base_link_collision">
+        <geometry>
+          <mesh>
+            <uri>model://husky_patrol/meshes/collision/ur5/base.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+    <joint name="ur5_mount_joint" type="fixed">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>arm_mount_plate_link</parent>
+      <child>ur5_base_link</child>
+    </joint>
+    <link name="lidar_link">
+      <pose relative_to="base_link">0.12 0 0.39772 0 0 0</pose>
+      <inertial>
+        <mass>0.15</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <iyy>0.0001</iyy>
+          <izz>0.0001</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="lidar_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.06</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+      <collision name="lidar_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <sensor name="lidar" type="gpu_lidar">
+        <topic>scan</topic>
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+        <visualize>true</visualize>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>25</max>
+            <resolution>0.01</resolution>
+          </range>
+        </lidar>
+      </sensor>
+    </link>
+    <joint name="lidar_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>lidar_link</child>
+    </joint>
+    <link name="camera_link">
+      <pose relative_to="base_link">0.43 0 0.51772 0 0 0</pose>
+      <inertial>
+        <mass>0.05</mass>
+        <inertia>
+          <ixx>0.00001</ixx>
+          <iyy>0.00001</iyy>
+          <izz>0.00001</izz>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <visual name="camera_visual">
+        <geometry>
+          <box>
+            <size>0.03 0.08 0.03</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.05 0.05 0.05 1</ambient>
+          <diffuse>0.05 0.05 0.05 1</diffuse>
+        </material>
+      </visual>
+      <collision name="camera_collision">
+        <geometry>
+          <box>
+            <size>0.03 0.08 0.03</size>
+          </box>
+        </geometry>
+      </collision>
+      <sensor name="camera" type="camera">
+        <topic>camera/image</topic>
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+        <visualize>true</visualize>
+        <camera>
+          <horizontal_fov>1.2</horizontal_fov>
+          <image>
+            <width>960</width>
+            <height>720</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>30</far>
+          </clip>
+        </camera>
+      </sensor>
+    </link>
+    <joint name="camera_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>camera_link</child>
+    </joint>
+    <static>false</static>
+    <pose>0 0 0.14 0 0 0</pose>
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <left_joint>front_left_wheel</left_joint>
+      <left_joint>rear_left_wheel</left_joint>
+      <right_joint>front_right_wheel</right_joint>
+      <right_joint>rear_right_wheel</right_joint>
+      <wheel_separation>0.5708</wheel_separation>
+      <wheel_radius>0.1651</wheel_radius>
+      <topic>/cmd_vel</topic>
+      <odom_topic>/wheel_odom</odom_topic>
+      <max_linear_acceleration>1.5</max_linear_acceleration>
+      <min_linear_acceleration>-2.5</min_linear_acceleration>
+      <max_angular_acceleration>3</max_angular_acceleration>
+      <min_angular_acceleration>-3</min_angular_acceleration>
+    </plugin>
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>map</odom_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <odom_topic>/odom</odom_topic>
+      <odom_publish_frequency>30</odom_publish_frequency>
+      <dimensions>3</dimensions>
+    </plugin>
+  </model>
+</sdf>
