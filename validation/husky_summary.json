@@ -1,0 +1,45 @@
+{
+  "model": "husky_patrol",
+  "checks": {
+    "mixed": {
+      "mode": "mixed",
+      "passed": true,
+      "completed_rounds": 2,
+      "anomalies": 2,
+      "collision_stops": 0,
+      "camera_frames": 434,
+      "gui": true
+    },
+    "clear": {
+      "mode": "none",
+      "passed": true,
+      "completed_rounds": 2,
+      "anomalies": 0,
+      "collision_stops": 0,
+      "camera_frames": 569,
+      "gui": true
+    },
+    "blocking": {
+      "mode": "blocking",
+      "passed": true,
+      "completed_rounds": 1,
+      "anomalies": 1,
+      "collision_stops": 1,
+      "camera_frames": 498,
+      "gui": false
+    }
+  },
+  "measured_footprint_samples": 937,
+  "overlapping_samples": 0,
+  "quarter_turn_degrees": [
+    85.88,
+    89.0
+  ],
+  "u_turn_degrees": [
+    177.19,
+    178.04
+  ],
+  "maximum_heading_error_deg": 2.53,
+  "blocking_bumper_clearance_m": 0.308,
+  "offline_tests_passed": 14
+}
