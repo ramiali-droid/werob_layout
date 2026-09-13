@@ -10,9 +10,9 @@
 
 ### Sketch: layers, exclusion zones and escape routes
 
-![Proposed map layers: structural reference, navigation and safety, and monitoring policy. The site sketch marks robot exclusions, conditional escapes and authorised versus obstructing pallets.](docs/mapping_layers_concept.png)
+![Proposed map layers: structural reference, navigation and safety, and monitoring policy. The site sketch marks robot exclusions, conditional escapes and authorised versus obstructing pallets.](mapping_layers_concept.png)
 
-[Open full-size sketch](docs/mapping_layers_concept.png) · [Editable vector version](docs/mapping_layers_concept.svg)
+[Open full-size sketch](mapping_layers_concept.png) · [Editable vector version](docs/mapping_layers_concept.svg)
 
 This is a **proposed deployment architecture**, not a drawing of the Gazebo floor plan or a claim that every layer is implemented. The three layers share one surveyed coordinate frame but have different update rules.
 
