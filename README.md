@@ -2,7 +2,7 @@
 
 The existing `husky_patrol` model now runs the accepted indoor/outdoor route using wheel physics, measured world pose, a LiDAR collision guard, route-wide anomaly detection and saved robot-camera evidence. Its original chassis, wheels, bumpers and meshes are retained. The earlier `patrol_rover` model remains in the workspace as a reference; the default launch uses Husky.
 
-![Route Map]([route_verification.png](https://github.com/ramiali-droid/werob_layout/blob/main/validation/route_verification.png))
+![Route Map](https://github.com/ramiali-droid/werob_layout/blob/main/validation/route_verification.png)
 
 ## Run
 
